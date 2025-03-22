@@ -1,2 +1,17 @@
 
 @import "tailwindcss";
+
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}  */
+ 
+/* Find way to enable on Game Screen to add Border^^ */
+
+/* html, body {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: none;
+} */
