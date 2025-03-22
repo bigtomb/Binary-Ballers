@@ -122,3 +122,32 @@ class PresentChoices(APIView):
         choices = CHOICES.get(request.session["game_state"]["decade"], [])
         return Response({"choices": choices})
 
+class MakeChoices(APIView):
+    def post(self, request):
+        selected_id = request.data.get("id")
+        if selected_id is None:
+            return Response({"error": "Missing id"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+        game_state = request.session["game_state"]
+        current_decade = game_state["decade"]
+
+        selection = None
+
+        collapsed = []
+        for category, options in CHOICES.get(current_decade, {}).items():
+            for option in options:
+                collapsed.append(option)
+
+        for option in collapsed:
+            if option['id'] == selected_id:
+                selection = option
+                break
+
+        print(selection)
+
+        if not selection:
+            return Response({"error": "Invalid selection"}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"selected_id": selected_id})
+
