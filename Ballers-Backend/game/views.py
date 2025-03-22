@@ -9,6 +9,7 @@ STARTING_STATE = {
     "income": 0,
     "debt": 0,
     "savings": 0,
+    "expenses": 0,
     "decade": "18-25",
     "housing": {
         "rent": 0,
@@ -28,13 +29,13 @@ CHOICES = {
             { "id": 2, "name": "Enter the Workforce Immediately", "impact": { "income": 30000 } }
         ],
         "living": [
-            { "id": 3, "name": "Live at Home", "impact": { "savings": 10000, "independence": -1 } },
-            { "id": 4, "name": "Rent an Apartment", "impact": { "savings": -12000, "independence": 1 } },
-            { "id": 5, "name": "Get a Roommate", "impact": { "savings": -6000, "independence": 1 } },
+            { "id": 3, "name": "Live at Home", "impact": { "savings": 10000} },
+            { "id": 4, "name": "Rent an Apartment", "impact": { "savings": -12000} },
+            { "id": 5, "name": "Get a Roommate", "impact": { "savings": -6000} },
             { "id": 6, "name": "Buy a House", "impact": { "debt": -150000, "net_worth": 150000 } }
         ],
         "financial": [
-            { "id": 7, "name": "Open a Credit Card", "impact": { "credit_score": 1, "debt": -1000 } },
+            { "id": 7, "name": "Open a Credit Card", "impact": {"debt": -1000 } },
             { "id": 8, "name": "Spend Freely", "impact": { "savings": -5000 } },
             { "id": 9, "name": "Save and Budget Wisely", "impact": { "savings": 10000 } },
             { "id": 10, "name": "Start Investing Early", "impact": { "net_worth": 5000 } }
@@ -48,7 +49,7 @@ CHOICES = {
     "25-35": {
         "career_progression": [
             { "id": 14, "name": "Stay at the Same Job", "impact": { "income": 70000 } },
-            { "id": 15, "name": "Change Jobs for Higher Salary", "impact": { "income": 90000, "risk": 1 } },
+            { "id": 15, "name": "Change Jobs for Higher Salary", "impact": { "income": 90000} },
             { "id": 16, "name": "Start a Business", "impact": { "debt": -50000, "net_worth": 100000 } }
         ],
         "housing": [
@@ -64,9 +65,9 @@ CHOICES = {
     },
     "35-50": {
         "career_worklife": [
-            { "id": 23, "name": "Push for Promotions", "impact": { "income": 100000, "stress": 2 } },
+            { "id": 23, "name": "Push for Promotions", "impact": { "income": 100000} },
             { "id": 24, "name": "Stay in Current Role", "impact": { "income": 85000 } },
-            { "id": 25, "name": "Start a Side Business", "impact": { "income": 20000, "time_commitment": -1 } }
+            { "id": 25, "name": "Start a Side Business", "impact": { "income": 20000} }
         ],
         "housing": [
             { "id": 26, "name": "Continue Renting", "impact": { "savings": -20000 } },
@@ -81,8 +82,8 @@ CHOICES = {
     "50-65": {
         "career_retirement": [
             { "id": 31, "name": "Keep Working", "impact": { "income": 120000 } },
-            { "id": 32, "name": "Retire Early", "impact": { "savings": -500000, "happiness": 2 } },
-            { "id": 33, "name": "Start a Consulting Job", "impact": { "income": 60000, "flexibility": 2 } }
+            { "id": 32, "name": "Retire Early", "impact": { "savings": -500000} },
+            { "id": 33, "name": "Start a Consulting Job", "impact": { "income": 60000} }
         ],
         "random_events": [
             { "id": 34, "name": "Medical Emergency", "impact": { "savings": -50000 } },
@@ -92,13 +93,13 @@ CHOICES = {
     },
     "65+": {
         "lifestyle_in_retirement": [
-            { "id": 37, "name": "Move to a Cheaper Location", "impact": { "expenses": -20000, "quality_of_life": 1 } },
-            { "id": 38, "name": "Stay in the Same City", "impact": { "expenses": -10000, "familiarity": 2 } },
-            { "id": 39, "name": "Travel and Enjoy Retirement", "impact": { "savings": -50000, "happiness": 3 } }
+            { "id": 37, "name": "Move to a Cheaper Location", "impact": { "expenses": -20000 } },
+            { "id": 38, "name": "Stay in the Same City", "impact": { "expenses": -10000 } },
+            { "id": 39, "name": "Travel and Enjoy Retirement", "impact": { "savings": -50000 } }
         ],
         "random_events": [
             { "id": 40, "name": "Receive a Large Inheritance", "impact": { "net_worth": 100000 } },
-            { "id": 41, "name": "Health Decline", "impact": { "expenses": -30000, "happiness": -1 } },
+            { "id": 41, "name": "Health Decline", "impact": { "expenses": -30000 } },
         ]
     }
 }
@@ -117,36 +118,50 @@ class StartGame(APIView):
         request.session["game_state"] = STARTING_STATE
         return Response({"game_state": request.session["game_state"]})
 
+# Returns List of choices bases on current decade
 class PresentChoices(APIView):
     def get(self, request):
         choices = CHOICES.get(request.session["game_state"]["decade"], [])
         return Response({"choices": choices})
 
+
+# Expects id of selection, updates game_state values
 class MakeChoices(APIView):
     def post(self, request):
+
+        #setting the user selected id
         selected_id = request.data.get("id")
         if selected_id is None:
             return Response({"error": "Missing id"}, status=status.HTTP_400_BAD_REQUEST)
 
+        #getting current game state and decade
+        current_game_state = request.session["game_state"]
+        current_decade = current_game_state["decade"]
 
-        game_state = request.session["game_state"]
-        current_decade = game_state["decade"]
 
-        selection = None
-
+        # combines all options into a single list for parsing
         collapsed = []
         for category, options in CHOICES.get(current_decade, {}).items():
             for option in options:
                 collapsed.append(option)
 
+
+        selection = None
+
+        # gets the selected option based on id and changes values in game_state
         for option in collapsed:
             if option['id'] == selected_id:
                 selection = option
-                break
 
-        print(selection)
+                current_game_state["debt"] += selection["impact"].get("debt", 0)
+                current_game_state["net_worth"] += selection["impact"].get("net_worth", 0)
+                current_game_state["savings"] += selection["impact"].get("savings", 0)
+                current_game_state["income"] += selection["impact"].get("income", 0)
 
-        if not selection:
+                request.session["game_state"] = current_game_state
+                return Response({"game_state": request.session["game_state"]})
+
+        else:
             return Response({"error": "Invalid selection"}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"selected_id": selected_id})
@@ -154,6 +169,7 @@ class MakeChoices(APIView):
 class GetGameState(APIView):
         def get(self, request):
             game_state = request.session.get("game_state")
+
 
             if not game_state:
                 return Response(
