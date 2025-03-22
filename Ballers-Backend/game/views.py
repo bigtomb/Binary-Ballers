@@ -164,8 +164,6 @@ class MakeChoices(APIView):
         else:
             return Response({"error": "Invalid selection"}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({"selected_id": selected_id})
-    
 class GetGameState(APIView):
         def get(self, request):
             game_state = request.session.get("game_state")
