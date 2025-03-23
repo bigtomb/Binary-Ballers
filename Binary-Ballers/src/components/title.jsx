@@ -13,7 +13,6 @@ function Title() {
               Learn about your financial future today
             </h2>
         </div>
-        
       </div>
       </>
     )

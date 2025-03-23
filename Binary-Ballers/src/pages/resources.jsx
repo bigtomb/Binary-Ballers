@@ -7,7 +7,7 @@ function Resources() {
 
     return (
       <>
-        <div className="pt-40">
+        <div className="">
             <ResourceTitle />
             <Research />
             <LearningResources />
