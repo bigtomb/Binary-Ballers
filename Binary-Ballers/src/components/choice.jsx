@@ -85,16 +85,39 @@ function Choice() {
     const isEndOfList = currentCategoryIndex >= categories.length;
 
     return (
-        <div className="max-w-md mx-auto bg-blue-100/80 rounded-3xl shadow-md overflow: auto md:max-w-2xl">
-            <div className="flex flex-col p-6 md:p-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 font-extrabold text-center">
+        <div className="">
+            <div className="fixed top-4 right-4 z-10 flex gap-2 sm:gap-4 pt-20">
+                <div className="bg-bank-gray rounded-full w-32 h-8">
+                    <div className="font-secondary text-center text-bank-green pt-1">
+                        
+                        {gameState.net_worth}
+                    </div> 
+                </div>
+                <div className="bg-bank-gray rounded-full w-32 h-8">
+                    <div className="font-secondary text-center text-bank-green pt-1">
+                        {gameState.income}
+                    </div> 
+                </div>
+                <div className="bg-bank-gray rounded-full w-32 h-8">
+                    <div className="font-secondary text-center text-bank-green pt-1">
+                        {gameState.income}
+                    </div> 
+                </div>
+                <div className="bg-bank-gray rounded-full w-32 h-8">
+                    <div className="font-secondary text-center text-bank-green pt-1">
+                        {gameState.debt}
+                    </div> 
+                </div>
+            </div>   
+            <h2 className="text-3xl font-primary md:text-4xl lg:text-5xl mb-4 md:mb-6 text-center text-bank-green bg-bank-gray justify-center px-auto">
                     {gameState.decade}
                 </h2>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 font-extrabold text-center">
-                    Net Worth
-                    :{gameState.net_worth} Income: {gameState.income} Savings: {gameState.savings} Debt: {gameState.debt}
-                </h2>
-                <p className="text-sm md:text-base font-bold text-center mb-6 md:mb-8">
+
+        <div className="max-w-md mx-auto bg-bank-gray rounded-3xl shadow-md overflow: auto md:max-w-2xl h-80">
+
+            <div className="flex flex-col p-6 md:p-8">
+
+                <p className="text-lg font-primary text-bank-green md:text-base font-bold text-center mb-6 md:mb-8">
                     {currentCategory}
                 </p>
                 <div
@@ -103,7 +126,7 @@ function Choice() {
                         <button
                             key={choice.id}
                             onClick={() => handleChoiceSelect(choice.id)}
-                            className="w-full bg-[#a5c3dd] hover:bg-[#94b2cc] text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
+                            className="w-full bg-lght-gray hover:bg-[#94b2cc] text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
                         >
                             {choice.name}
                         </button>
@@ -113,7 +136,7 @@ function Choice() {
                     <div
                         className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
                         <button
-                            className="w-full bg-[#a5c3dd] hover:bg-[#94b2cc] text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
+                            className="w-full bg-lght-gray hover:bg-[#94b2cc] text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
                             onClick={() => advanceDecade()}
                         >
                             ADVANCE
@@ -122,7 +145,9 @@ function Choice() {
                 )}
             </div>
         </div>
+        </div>
     );
 }
 
 export default Choice;
+

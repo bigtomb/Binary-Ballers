@@ -1,12 +1,13 @@
 
 import React from 'react'
-import Choice from '../components/choice'
+import Choice from '../components/choice.jsx'
 
 import ApartmentBackground from '../assets/backgrounds/bg-apt.png'
 import HomeBackground from '../assets/backgrounds/bg-home.png' 
 import OfficeBackground from '../assets/backgrounds/bg-office.png'
 
 function Game() {
+
 
   const questionsData = {
     firstQuestion: {
@@ -48,7 +49,7 @@ function Game() {
           style={{
           backgroundImage: `url(${ApartmentBackground})`
         }}>
-            <div className="pt-40">            
+            <div className="pt-40">   
             <Choice
       initialQuestion={questionsData.firstQuestion.question}
       initialDescription={questionsData.firstQuestion.description}
@@ -56,7 +57,6 @@ function Game() {
       questionsData={questionsData}
     />
             </div>
-
         </div>
       </>
     )
