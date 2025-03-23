@@ -163,6 +163,39 @@ class MakeChoices(APIView):
 
         else:
             return Response({"error": "Invalid selection"}, status=status.HTTP_400_BAD_REQUEST)
+        
+class GetGameState(APIView):
+        def get(self, request):
+            game_state = request.session.get("game_state")
+
+
+            if not game_state:
+                return Response(
+                    {"error: No active game state "},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            return Response({
+                    "game_state": game_state
+                })
+class RandomEvent(APIView):
+                def get(self, request):
+                    # Select a random event from the list
+                    random_event = random.choice(RANDOM_EVENTS)
+                    
+                    # Apply the event to the game state
+                    current_game_state = request.session["game_state"]
+                    current_game_state["net_worth"] += random_event["impact"].get("net_worth", 0)
+                    current_game_state["savings"] += random_event["impact"].get("savings", 0)
+                    current_game_state["debt"] += random_event["impact"].get("debt", 0) 
+                    current_game_state["income"] += random_event["impact"].get("income", 0)
+                    request.session["game_state"] = current_game_state
+                    
+                    return Response({
+                         "game_state": request.session["game_state"], 
+                         "event": random_event
+                         })
+                
+
 
 
 
