@@ -6,5 +6,6 @@ urlpatterns = [
     path("choices", PresentChoices.as_view(), name="choices_game"),
     path("selection", MakeChoices.as_view(), name="selection_game"),
     path('game_state', GetGameState.as_view(), name='get_game_state'),
+    path('advance', DecadeProgression.as_view(), name='get_game_state'),
 
 ]
