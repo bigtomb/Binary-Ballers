@@ -120,7 +120,7 @@ function Choice() {
                     </div> 
                 </div>
             </div>   
-            <h2 className="text-3xl font-primary md:text-4xl lg:text-5xl mb-4 md:mb-6 text-center text-bank-green bg-bank-gray justify-center px-auto">
+            <h2 className="text-3xl font-primary md:text-4xl lg:text-5xl mb-4 md:mb-6 text-center text-bank-green justify-center px-auto mx-auto">
                     {gameState.decade}
                 </h2>
 
