@@ -1,3 +1,5 @@
+// import ResourcesTitle from "../components/resources-title.jsx"
+
 import Footer from "../components/footer.jsx"
 
 
