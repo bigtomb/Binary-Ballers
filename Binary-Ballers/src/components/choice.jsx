@@ -87,25 +87,36 @@ function Choice() {
     return (
         <div className="">
             <div className="fixed top-4 right-4 z-10 flex gap-2 sm:gap-4 pt-20">
-                <div className="bg-bank-gray rounded-full w-32 h-8">
-                    <div className="font-secondary text-center text-bank-green pt-1">
-                        
+                <div className="bg-bank-gray rounded-full w-34 h-12">
+                    <div className="font-secondary text-center text-bank-green">
+                        <div>
+                            Net Worth
+                        </div>
                         {gameState.net_worth}
                     </div> 
                 </div>
-                <div className="bg-bank-gray rounded-full w-32 h-8">
-                    <div className="font-secondary text-center text-bank-green pt-1">
-                        {gameState.income}
+                <div className="bg-bank-gray rounded-full w-34 h-12">
+                    <div className="font-secondary text-center text-bank-green">
+                        <div>
+                            Income
+                        </div>
+                        {gameState.income} /yr
                     </div> 
                 </div>
-                <div className="bg-bank-gray rounded-full w-32 h-8">
-                    <div className="font-secondary text-center text-bank-green pt-1">
-                        {gameState.income}
-                    </div> 
-                </div>
-                <div className="bg-bank-gray rounded-full w-32 h-8">
-                    <div className="font-secondary text-center text-bank-green pt-1">
+                <div className="bg-bank-gray rounded-full w-34 h-12">
+                    <div className="font-secondary text-center text-red-600">
+                        <div>
+                            Debt
+                        </div>
                         {gameState.debt}
+                    </div> 
+                </div>
+                <div className="bg-bank-gray rounded-full w-34 h-12">
+                    <div className="font-secondary text-center text-bank-green">
+                        <div>
+                            Savings
+                        </div>
+                        {gameState.savings}
                     </div> 
                 </div>
             </div>   
@@ -116,17 +127,20 @@ function Choice() {
         <div className="max-w-md mx-auto bg-bank-gray rounded-3xl shadow-md overflow: auto md:max-w-2xl h-80">
 
             <div className="flex flex-col p-6 md:p-8">
-
-                <p className="text-lg font-primary text-bank-green md:text-base font-bold text-center mb-6 md:mb-8">
+                <div className="text-2xl font-secondary text-platinum  font-bold text-center mb-3">
+                    Category:
+                </div>
+                    
+                <div className="text-2xl font-primary  text-bank-green  font-bold text-center mb-6 md:mb-8">
                     {currentCategory}
-                </p>
+                </div>
                 <div
                     className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
                     {currentChoices.map((choice) => (
                         <button
                             key={choice.id}
                             onClick={() => handleChoiceSelect(choice.id)}
-                            className="w-full bg-lght-gray hover:bg-[#94b2cc] text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
+                            className="w-full bg-lght-gray hover:bg-money-green text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
                         >
                             {choice.name}
                         </button>
@@ -134,9 +148,9 @@ function Choice() {
                 </div>
                 {currentCategoryIndex === categories.length - 1 && (
                     <div
-                        className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 pt-6">
                         <button
-                            className="w-full bg-lght-gray hover:bg-[#94b2cc] text-white px-6 py-2 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
+                            className="w-full active:bg-money-green bg-lght-gray hover:bg-lght-gray text-white hover:text-creamy font-primary px-6 py-2 pt-4 rounded-full border-0 cursor-pointer transition duration-300 ease-in-out"
                             onClick={() => advanceDecade()}
                         >
                             ADVANCE

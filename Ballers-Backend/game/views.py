@@ -40,11 +40,11 @@ CHOICES = {
             { "id": 9, "name": "Save and Budget Wisely", "impact": { "savings": 10000 } },
             { "id": 10, "name": "Start Investing Early", "impact": { "net_worth": 5000 } }
         ],
-        "random_events": [
-            { "id": 11, "name": "Car Breaks Down", "impact": { "savings": -2000 } },
-            { "id": 12, "name": "Win a Small Lottery", "impact": { "savings": 5000 } },
-            { "id": 13, "name": "Unexpected Medical Bill", "impact": { "savings": -3000 } }
-        ]
+        # "random_events": [
+        #     { "id": 11, "name": "Car Breaks Down", "impact": { "savings": -2000 } },
+        #     { "id": 12, "name": "Win a Small Lottery", "impact": { "savings": 5000 } },
+        #     { "id": 13, "name": "Unexpected Medical Bill", "impact": { "savings": -3000 } }
+        # ]
     },
     "25-35": {
         "career_progression": [
@@ -57,11 +57,11 @@ CHOICES = {
             { "id": 18, "name": "Buy a Home", "impact": { "debt": -250000, "net_worth": 250000 } },
             { "id": 19, "name": "Move to a Different City", "impact": { "income": 80000, "costs": -10000 } }
         ],
-        "random_events": [
-            { "id": 20, "name": "Car Accident", "impact": { "savings": -5000 } },
-            { "id": 21, "name": "Receive an Inheritance", "impact": { "net_worth": 20000 } },
-            { "id": 22, "name": "Lose a Job", "impact": { "income": -40000 } }
-        ]
+        # "random_events": [
+        #     { "id": 20, "name": "Car Accident", "impact": { "savings": -5000 } },
+        #     { "id": 21, "name": "Receive an Inheritance", "impact": { "net_worth": 20000 } },
+        #     { "id": 22, "name": "Lose a Job", "impact": { "income": -40000 } }
+        # ]
     },
     "35-50": {
         "career_worklife": [
@@ -73,11 +73,11 @@ CHOICES = {
             { "id": 26, "name": "Continue Renting", "impact": { "savings": -20000 } },
             { "id": 27, "name": "Buy a Home", "impact": { "debt": -300000, "net_worth": 350000 } }
         ],
-        "random_events": [
-            { "id": 28, "name": "Major Home Repairs", "impact": { "savings": -10000 } },
-            { "id": 29, "name": "Stock Market Crash", "impact": { "net_worth": -20000 } },
-            { "id": 30, "name": "Big Promotion", "impact": { "income": 20000 } }
-        ]
+        # "random_events": [
+        #     { "id": 28, "name": "Major Home Repairs", "impact": { "savings": -10000 } },
+        #     { "id": 29, "name": "Stock Market Crash", "impact": { "net_worth": -20000 } },
+        #     { "id": 30, "name": "Big Promotion", "impact": { "income": 20000 } }
+        # ]
     },
     "50-65": {
         "career_retirement": [
@@ -85,11 +85,11 @@ CHOICES = {
             { "id": 32, "name": "Retire Early", "impact": { "savings": -500000} },
             { "id": 33, "name": "Start a Consulting Job", "impact": { "income": 60000} }
         ],
-        "random_events": [
-            { "id": 34, "name": "Medical Emergency", "impact": { "savings": -50000 } },
-            { "id": 35, "name": "Real Estate Investment Pays Off", "impact": { "net_worth": 50000 } },
-            { "id": 36, "name": "Unexpected Family Expense", "impact": { "savings": -15000 } }
-        ]
+        # "random_events": [
+        #     { "id": 34, "name": "Medical Emergency", "impact": { "savings": -50000 } },
+        #     { "id": 35, "name": "Real Estate Investment Pays Off", "impact": { "net_worth": 50000 } },
+        #     { "id": 36, "name": "Unexpected Family Expense", "impact": { "savings": -15000 } }
+        # ]
     },
     "65+": {
         "lifestyle_in_retirement": [
@@ -97,10 +97,10 @@ CHOICES = {
             { "id": 38, "name": "Stay in the Same City", "impact": { "expenses": -10000 } },
             { "id": 39, "name": "Travel and Enjoy Retirement", "impact": { "savings": -50000 } }
         ],
-        "random_events": [
-            { "id": 40, "name": "Receive a Large Inheritance", "impact": { "net_worth": 100000 } },
-            { "id": 41, "name": "Health Decline", "impact": { "expenses": -30000 } },
-        ]
+        # "random_events": [
+        #     { "id": 40, "name": "Receive a Large Inheritance", "impact": { "net_worth": 100000 } },
+        #     { "id": 41, "name": "Health Decline", "impact": { "expenses": -30000 } },
+        # ]
     }
 }
 
