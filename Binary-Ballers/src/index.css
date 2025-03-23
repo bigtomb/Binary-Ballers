@@ -1,6 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&family=Titan+One&display=swap');
 @import "tailwindcss";
 
 
+/* custom colors */
+@theme {
+
+  --font-primary: "Dangrek", "sans-serif";
+  --font-secondary: "Titan One", "sans-serif"; 
+  
+  --color-money-green: #61892F;
+  --color-lght-green: #86C232;
+  --color-wing-green:#006828;
+  --color-drk-gray: #222629;
+  --color-mdle-gray: #474B4F;
+  --color-lght-gray: #6B6E70;
+  --color-mid-gray: #686764;
+  --color-caramel: #D8C3A5;
+  --color-cream: #c6bd9f;
+  --color-creamy: #e2decf;
+
+
+}
+/* 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -14,18 +36,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* add .background for bg images */
-
-/* html, body {
-  padding: 0;
-  margin: 0;
-  overflow-y:auto;
-  color: rbg(209, 220, 240);
-  overflow: auto;
-  height: 100%;
-
-  overscroll-behavior: none;
-
 } */
+
+

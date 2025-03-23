@@ -1,3 +1,4 @@
+import Footer from "../components/footer.jsx"
 
 
 function Resources() {
@@ -7,6 +8,7 @@ function Resources() {
         <div className="pt-40">
             <h1>Resources</h1>
         </div>
+        <Footer />
       </>
     )
   }
