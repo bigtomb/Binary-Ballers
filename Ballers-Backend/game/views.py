@@ -174,6 +174,4 @@ class GetGameState(APIView):
                     {"error: No active game state "},
                     status=status.HTTP_400_BAD_REQUEST
                 )
-            return Response({
-                    "game_state": game_state
-                })
+            return Response({"game_state": game_state})
