@@ -178,7 +178,7 @@ class GetGameState(APIView):
                     "game_state": game_state
                 })
 class RandomEvent(APIView):
-                def get(self, request):
+                def post(self, request):
                     # Select a random event from the list
                     random_event = random.choice(RANDOM_EVENTS)
                     
