@@ -12,16 +12,25 @@
   --color-money-green: #61892F;
   --color-lght-green: #86C232;
   --color-wing-green:#006828;
+  --color-bank-green: #2DCE04;
+  --color-bank-gray: #3E3C3C;
   --color-drk-gray: #222629;
   --color-mdle-gray: #474B4F;
   --color-lght-gray: #6B6E70;
   --color-mid-gray: #686764;
   --color-caramel: #D8C3A5;
-  --color-cream: #c6bd9f;
   --color-creamy: #e2decf;
 
+  --color-timberwolf: #DBD1D1;
+  --color-platinum: #DBDBDB;
+  --color-dim-gray: #636363;
+  --color-davy-gray: #4C4C4C;
 
 }
+/* 
+#C6F4D6
+#8BC34A
+#2E865F */
 /* 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
