@@ -1,18 +1,14 @@
-
-
-function Info() {
+function LearningResources() {
 
     return (
       <>
-      <div className="bg-dim-gray bg-fixed bg-cover bg-center bg-no-repeat min-h-screen w-full ">
+      <div className="bg-reseda bg-fixed bg-cover bg-center bg-no-repeat min-h-screen w-full ">
         <div className="font-primary text-7xl text-center text-white pt-64">
             <h1>Home Hero</h1>
         </div>
       </div>
       </>
     )
-  };
+  }
   
-  export default Info
-
-  
+  export default LearningResources
